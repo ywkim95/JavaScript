@@ -50,3 +50,72 @@ console.log(yuJin2.age);
 console.log(yuJin2.year);
 
 console.log(Object.getOwnPropertyDescriptor(yuJin2, 'age'));
+
+// yuJin2.height = 172;
+// console.log(yuJin2);
+// console.log(Object.getOwnPropertyDescriptor(yuJin2, 'height'));
+
+Object.defineProperty(yuJin2, 'height', {
+    value: 172,
+    writable: true,
+    enumerable: true,
+    configurable: true,
+})
+console.log(yuJin2);
+console.log(Object.getOwnPropertyDescriptor(yuJin2,'height'));
+/**
+ * writable
+ */
+yuJin2.height = 180;
+console.log(yuJin2);
+Object.defineProperty(yuJin2,'height',{
+    writable: false,
+})
+console.log(Object.getOwnPropertyDescriptor(yuJin2,'height'));
+console.log('--------------');
+yuJin2.height = 172;
+console.log(yuJin2);
+
+/**
+ * Enumerable
+ */
+console.log(Object.keys(yuJin2));
+for(let key in yuJin2){
+    console.log(key);
+}
+Object.defineProperty(yuJin2,'name',{
+    enumerable: false,
+});
+console.log(Object.getOwnPropertyDescriptor(yuJin2,'name'));
+console.log('----------------');
+console.log(Object.keys(yuJin2));
+for(let key in yuJin2) {
+    console.log(key);
+}
+console.log(yuJin2);
+console.log(yuJin2.name);
+
+/**
+ * Configurable
+ */
+Object.defineProperty(yuJin2, 'height',{
+    writable: true,
+    configurable: false,
+});
+console.log(Object.getOwnPropertyDescriptor(yuJin2,'height'));
+
+// Object.defineProperty(yuJin2,'height',{
+//     enumerable: false,
+// });
+
+Object.defineProperty(yuJin2,'height',{
+    value:172,
+});
+console.log(Object.getOwnPropertyDescriptor(yuJin2,'height'));
+Object.defineProperty(yuJin2,'height',{
+    writable: false,
+});
+console.log(Object.getOwnPropertyDescriptor(yuJin2,'height'));
+Object.defineProperty(yuJin2,'height',{
+    writable: true,
+});
